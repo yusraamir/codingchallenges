@@ -1,0 +1,22 @@
+def calc_grade_level(text):
+    num_letters = sum(1 for char in text if char.isalpha())
+    num_words= len(text.split())
+    num_sentences= text.count('.') + text.count ('?') +text.count ('!')
+    
+    L= (num_letters/num_words) * 100
+    S = (num_sentences/num_words) *100
+    index= 0.0588 * L - 0.296 * S - 15.8
+    grade_level= round(index)
+    
+    return(grade_level)
+
+def main():
+    text = input("Enter text to determine grade level: ")
+    grade_level = calc_grade_level(text)
+    print(f"Grade {grade_level}")
+
+if __name__ == "__main__":
+    main()
+    
+# Enter text to determine grade level: Congratulations! Today is your day. You're off to Great Places! You're off and away!
+#Grade 3
